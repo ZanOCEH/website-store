@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ptero Hosting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Pop-up Overlay -->
+<div class="popup-overlay">
+    <div class="popup-content">
+        <img src="https://telegra.ph/file/33abba1045bdcf3ed7117.jpg" alt="Info Update Produk">
+        <h3>Information !</h3>
+        <p>Selamat Datang Diweb PteroHosting!, Btw ini web masih tahap perkembangan :V</p>
+        <button class="close-popup">Tutup</button>
+    </div>
+</div>
+<script>
+    // Tampilkan pop-up ketika halaman selesai dimuat
+    window.addEventListener('load', function() {
+        document.querySelector('.popup-overlay').style.display = 'flex';
+    });
+
+    // Tutup pop-up ketika tombol "Tutup" diklik
+    document.querySelector('.close-popup').addEventListener('click', function() {
+        document.querySelector('.popup-overlay').style.display = 'none';
+    });
+
+    // Tutup pop-up ketika klik di luar kotak pop-up
+    document.querySelector('.popup-overlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+    });
+</script>
+<!-- JavaScript -->
+<script src="internet-speed.js"></script>
+<script>
+    // Fungsi untuk memperbarui status baterai
+    function updateBatteryStatus(battery) {
+        const batteryLevel = document.getElementById('battery-level');
+        const level = (battery.level * 100).toFixed(0);
+        const charging = battery.charging ? 'Sedang diisi' : 'Tidak diisi';
+        batteryLevel.textContent = `Tingkat Baterai: ${level}% (${charging})`;
+    }
+
+    // Cek apakah Battery Status API tersedia
+    if ('getBattery' in navigator) {
+        navigator.getBattery().then(function(battery) {
+            // Perbarui status baterai saat halaman dimuat
+            updateBatteryStatus(battery);
+
+            // Perbarui status baterai saat ada perubahan
+            battery.addEventListener('levelchange', function() {
+                updateBatteryStatus(battery);
+            });
+            battery.addEventListener('chargingchange', function() {
+                updateBatteryStatus(battery);
+            });
+        });
+    } else {
+        // API tidak tersedia
+        document.getElementById('battery-level').textContent = 'Status baterai tidak tersedia di browser ini.';
+    }
+</script>
+
+<body>
+<header>
+    <div class="container">
+        <h1>
+            <img src="https://telegra.ph/file/33abba1045bdcf3ed7117.jpg" alt="Logo" class="logo"> PteroHosting
+            <span class="internet-info">
+                <img src="https://telegra.ph/file/13f7322f4a697d849389d.png" alt="WiFi Icon" class="icon-wifi">
+                <span id="internet-speed">0 Mbps</span>
+            </span>
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://wa.me/6283879596214?text=kak+send+paymentnya+mau+tf!" target="_blank" class="btn payment">
+                        Payment
+                        <img src="https://telegra.ph/file/898ac2256df723f01a8d7.jpg" alt="QRIS" class="icon-qris">
+                    </a>
+                </li>
+                <li><a href="https://chat.whatsapp.com/FEflopGhSrT6L9OjFLNH63" target="_blank" class="btn group-info">Group Info</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+
+  <section class="hero">
+    <div class="container">
+        <div class="banner">
+            <h2>Selamat Datang di PteroHosting</h2>
+            <p>Ini adalah halaman beranda. Temukan informasi dan layanan terbaik di sini, Untuk Memesan Bisa Click "Beli Sekarang". Atau Click Icon Wa Dibawah!.</p>
+        </div>
+    </div>
+</section>
+
+
+        <section class="content">
+            <div class="container">
+                <h2>Info Promo Hari Minggi!</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Soon........</h3>
+                        <p>Coming Soon.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Soon........</h3>
+                        <p>Coming Soon.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Soon........</h3>
+                        <p>Coming Soon.</p>
+                    </div>
+                    <!-- Tambahkan lebih banyak .card jika perlu -->
+                </div>
+            </div>
+        </section>
+
+<section class="battery-status">
+    <div class="container">
+        <h2>Status Baterai Anda</h2>
+        <div id="battery-status" class="battery-container">
+            <div class="battery-icon">
+                <!-- Gambar ikon hosting atau server -->
+                <img src="https://telegra.ph/file/33abba1045bdcf3ed7117.jpg" alt="Hosting Icon">
+            </div>
+            <div class="battery-level">
+                <div id="battery-level">Memuat status baterai...</div>
+                <div id="battery-charging-status"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="time-status">
+    <div class="container">
+        <h2>Jam Indonesia</h2>
+        <div id="time-status" class="time-container">
+            <div class="time-icon">
+                <!-- Gambar ikon jam atau logo waktu -->
+                <img src="https://telegra.ph/file/33abba1045bdcf3ed7117.jpg" alt="Jam Icon">
+            </div>
+            <div class="time-info">
+                <div id="wib-time">WIB: Memuat waktu...</div>
+                <div id="wita-time">WITA: Memuat waktu...</div>
+                <div id="wit-time">WIT: Memuat waktu...</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function updateIndonesiaTime() {
+        const now = new Date();
+
+        // WIB (UTC+7)
+        const wibOffset = 7 * 60 * 60 * 1000;
+        const wibTime = new Date(now.getTime() + wibOffset);
+        document.getElementById('wib-time').textContent = `WIB: ${wibTime.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+
+        // WITA (UTC+8)
+        const witaOffset = 8 * 60 * 60 * 1000;
+        const witaTime = new Date(now.getTime() + witaOffset);
+        document.getElementById('wita-time').textContent = `WITA: ${witaTime.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+
+        // WIT (UTC+9)
+        const witOffset = 9 * 60 * 60 * 1000;
+        const witTime = new Date(now.getTime() + witOffset);
+        document.getElementById('wit-time').textContent = `WIT: ${witTime.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+    }
+
+    // Perbarui waktu setiap detik
+    setInterval(updateIndonesiaTime, 1000);
+
+    // Perbarui waktu saat halaman dimuat
+    window.addEventListener('load', updateIndonesiaTime);
+</script>
+
+
+
+        <section class="products">
+            <div class="container">
+                <h2>Produk Kami</h2>
+                <div class="product-list">
+<div class="product-card best-seller">
+    <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="Panel Unlmited">
+    <h3>Panel PteroDactyle</h3>
+    <p class="price">Rp 10.000</p>
+    <p>Panel Ram Unli Cpu Unli</p>
+    <p>Garansi 1 Bulan Penuh,Panel Private,Panel On24Jam & Admin Cuman Saya</p>
+    <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+panel+Unlmited" class="btn" target="_blank">Beli Sekarang</a>
+    <div class="best-seller-label">BEST SELLER!!</div>
+</div>
+
+                    <div class="product-card">
+                        <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="panel 7gb">
+                        <h3>Panel Pterodactyle</h3>
+                        <p class="price">Rp 7.000</p>
+                        <p>Panel Ram 7GB Cpu 300%</p>
+                        <p>Garansi 1 Bulan Penuh,Panel Private,Panel On24Jam & Admin Cuman Saya</p>
+                        <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+panel+ram+7gb" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="Panel 5gb">
+    <h3>Panel PteroDactyle</h3>
+    <p class="price">Rp 5.000</p>
+    <p>Panel Ram 5GB Cpu 165%</p>
+    <p>Garansi 1 Bulan Penuh,Panel Private,Panel On24Jam & Admin Cuman Saya</p>
+    <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+panel+ram+5gb" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="Panel 3gb">
+    <h3>Panel PteroDactyle</h3>
+    <p class="price">Rp 3.000</p>
+    <p>Panel Ram 3GB Cpu 100%</p>
+    <p>Garansi 1 Bulan Penuh,Panel Private,Panel On24Jam & Admin Cuman Saya</p>
+    <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+panel+ram+3gb" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="Subdomain">
+    <h3>Subdomain Panel</h3>
+    <p class="price">Rp 5.000</p>
+    <p>Bonus Node Subdo%</p>
+    <p>Bisa dibuat untuk install panel,wings,dll. Free node.example.com</p>
+    <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+subdomain" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                    <div class="product-card">
+                         <img src="https://telegra.ph/file/7cff8e0a10b95eb27d5f4.jpg" alt="Reseller Panel">
+    <h3>Panel PteroDactyle</h3>
+    <p class="price">Rp 15.000</p>
+    <p>Bebas Create Panel</p>
+    <p>Batas Create Panel 1gb-27gb</p>
+    <a href="https://wa.me/6283879596214?text=Assalammualaikum+bang+mw+pesan+produk+reseller+panel" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Tentang -->
+        <section class="about">
+            <div class="container">
+                <h2>Tentang Kami</h2>
+                <div class="about-info">
+                    <div class="owner">
+                        <h3>Pemilik Website</h3>
+                        <p>Nama: PteroStore</p>
+                        <p>Email: PRIVATE!!!!</p>
+                        <p>Nomor Telepon: 6283879596214</p>
+                    </div>
+                    <div class="social-media">
+                        <h3>Sosial Media</h3>
+                        <ul>
+                            <li><a href="https://whatsapp.com/channel/0029VaPWBuGAe5Vy6qXUZE2f" target="_blank">Testimoni Store</a></li>
+                            <li><a href="https://wa.me/6283879596214" target="_blank">wa</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Ikon WhatsApp -->
+<a href="https://wa.me/6283879596214" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+</a>
+
+<!-- Tombol Komentar -->
+<div class="comment-float" id="commentButton">
+    💬
+</div>
+
+<script>
+    document.getElementById('commentButton').addEventListener('click', function() {
+        window.location.href = "datagroup.html"; // Mengarahkan ke datagroup.html
+    });
+</script>
+
+<script>
+    document.getElementById('commentButton').addEventListener('click', function() {
+        fetch('datagroup.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content-area').innerHTML = data; // Tampilkan konten di dalam div
+            })
+            .catch(error => console.log('Error loading the page:', error));
+    });
+</script>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy;2024-2027 PteroHosting.</p>
+        </div>
