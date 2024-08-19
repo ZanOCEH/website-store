@@ -857,3 +857,96 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* Gaya Umum untuk Taskbar */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Mengatur posisi menu ke kanan */
+    align-items: center;
+    gap: 20px;
+}
+
+/* Gaya untuk Item Taskbar */
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Responsive untuk Tablet (768px ke bawah) */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Taskbar berubah ke arah vertikal */
+        align-items: flex-start; /* Menyusun taskbar di sisi kiri */
+    }
+
+    nav ul li {
+        margin-bottom: 10px; /* Berikan spasi antar item vertikal */
+        margin-right: 0;
+    }
+}
+
+/* Responsive untuk Mobile (480px ke bawah) */
+@media screen and (max-width: 480px) {
+    nav ul {
+        justify-content: center; /* Posisikan taskbar di tengah */
+        flex-direction: column; /* Tetap vertikal */
+    }
+
+    nav ul li {
+        margin-bottom: 15px; /* Berikan lebih banyak spasi antar item */
+    }
+
+    nav ul li a {
+        font-size: 1.2rem; /* Perbesar teks untuk keterbacaan */
+    }
+}
+
+/* Tambahkan padding dan ukuran font untuk kenyamanan */
+nav ul li a {
+    padding: 10px 15px; /* Tambahkan padding pada item menu */
+    border-radius: 5px; /* Membuat tepi melengkung */
+    transition: background-color 0.3s ease; /* Efek transisi */
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* Warna background saat hover */
+}
+
+/* Gaya untuk Mobile Toggle (opsional jika menggunakan menu burger) */
+nav .menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Tampilkan Menu Toggle di layar kecil */
+@media screen and (max-width: 768px) {
+    nav .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    nav ul {
+        display: none; /* Sembunyikan menu di layar kecil */
+    }
+
+    nav ul.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Contoh toggle menu burger */
+.menu-toggle.active .bar {
+    background-color: #fff;
+}
