@@ -754,3 +754,106 @@ header .internet-info #internet-speed {
 .comment-float:hover {
     background-color: #e67e22;
 }
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.cards, .product-list, .about-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.card, .product-card, .owner, .social-media {
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 300px;
+    max-width: 100%;
+}
+
+/* Media Query untuk Tablet dan di bawahnya */
+@media screen and (max-width: 1024px) {
+    .cards, .product-list, .about-info {
+        justify-content: center;
+    }
+
+    .card, .product-card, .owner, .social-media {
+        flex: 1 1 calc(50% - 1rem);
+    }
+}
+
+/* Media Query untuk Smartphone */
+@media screen and (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .cards, .product-list, .about-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card, .product-card, .owner, .social-media {
+        flex: 1 1 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* Media Query untuk Smartphone kecil */
+@media screen and (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+    }
+}
+
+body {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
