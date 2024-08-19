@@ -857,3 +857,58 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* Navbar Styling */
+.navbar {
+    position: relative;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: white; /* Warna teks putih */
+}
+
+.navbar ul li a:hover {
+    color: #007BFF; /* Warna saat di-hover */
+}
+
+/* Responsif untuk Mobile */
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    .navbar ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .navbar ul li a {
+        font-size: 18px;
+        color: white; /* Warna teks tetap putih di mobile */
+    }
+}
+
+/* Tambahan untuk layar sangat kecil */
+@media screen and (max-width: 480px) {
+    .navbar ul li a {
+        font-size: 16px;
+        color: white; /* Warna teks tetap putih di layar kecil */
+    }
+}
