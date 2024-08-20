@@ -12,41 +12,49 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         h1 {
             text-align: center;
             margin-top: 20px;
             color: #333;
         }
 
-        /* Styling Tabel */
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
+        /* Styling untuk Container Card */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styling untuk Card */
+        .card {
             background-color: white;
+            padding: 20px;
+            border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f8f8f8;
-            font-weight: bold;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
+            text-align: center;
         }
 
-        /* Styling Ikon Grup */
-        img.group-icon {
-            width: 50px;
-            height: 50px;
+        .card img {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
+            margin-bottom: 15px;
         }
 
-        /* Styling Tombol Join */
+        .card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
         .btn-join {
             display: inline-block;
             padding: 10px 20px;
@@ -55,11 +63,11 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            text-align: center;
         }
+
         .btn-join:hover {
             background-color: #128C7E;
-            transform: scale(1.1); /* Membesar 10% */
+            transform: scale(1.05); /* Membesar sedikit */
         }
 
         /* Tombol Back di Kiri Bawah */
@@ -74,73 +82,20 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .btn-back:hover {
             background-color: #555;
         }
 
-        /* Styling Popup Overlay */
-        .popup-overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        /* Styling Popup */
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: white;
-            border: 1px solid #ddd;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-        .popup-content {
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        .popup-close {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #333;
-        }
-        .popup-close:hover {
-            color: red;
-        }
-        .popup-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .popup-button:hover {
-            background-color: #128C7E;
-        }
-
         /* Responsif */
         @media (max-width: 768px) {
-            table {
-                width: 100%;
+            .card-container {
+                grid-template-columns: 1fr;
             }
-            th, td {
-                padding: 10px;
-            }
-            img.group-icon {
-                width: 40px;
-                height: 40px;
+
+            .card img {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -149,56 +104,19 @@
 
 <h1>Daftar Rekomendasi Grup WhatsApp</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Icon</th>
-            <th>Nama Grup</th>
-            <th>Deskripsi</th>
-            <th>Jumlah Anggota</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><img src="https://telegra.ph/file/2e722aac633f8097a8c3d.jpg" alt="Group Icon" class="group-icon"></td>
-            <td>Grup KurumiMD</td>
-            <td>Grup Bot wangsaff online 24 jam no limit.</td>
-            <td>150 Anggota</td>
-            <td><a href="https://chat.whatsapp.com/FEflopGhSrT6L9OjFLNH63" target="_blank" class="btn-join">Join</a></td>
-        </tr>
-</table>
-
-<!-- Popup Overlay -->
-<div id="popup-overlay" class="popup-overlay" onclick="closePopup()">
-    <div id="popup" class="popup">
-        <span class="popup-close" onclick="closePopup()">&times;</span>
-        <div class="popup-content">
-            <p>Selamat datang di Daftar Grup WhatsApp kami!</p>
-            <a href="https://chat.whatsapp.com/FEflopGhSrT6L9OjFLNH63" target="_blank" class="popup-button">Join Grup Utama</a>
-        </div>
+<div class="card-container">
+    <div class="card">
+        <img src="https://telegra.ph/file/2e722aac633f8097a8c3d.jpg" alt="Group Icon">
+        <h3>Grup KurumiMD</h3>
+        <p>Grup Bot wangsaff online 24 jam no limit.</p>
+        <p>150 Anggota</p>
+        <a href="https://chat.whatsapp.com/FEflopGhSrT6L9OjFLNH63" target="_blank" class="btn-join">Join</a>
     </div>
+    <!-- Tambahkan card grup lainnya di sini -->
 </div>
 
 <!-- Tombol Back -->
 <a href="index.html" class="btn-back">Back</a>
 
-<script>
-    function showPopup() {
-        document.getElementById('popup-overlay').style.display = 'block';
-    }
-
-    function closePopup(event) {
-        if (event) {
-            // Prevent the event from closing the popup if clicking inside the popup
-            if (event.target === document.getElementById('popup')) return;
-        }
-        document.getElementById('popup-overlay').style.display = 'none';
-        // Set the time when popup was closed
-        localStorage.setItem('popupCloseTime', Date.now());
-    }
-
-    function checkPopupDisplay() {
-        const popupCloseTime = localStorage.getItem('popupCloseTime');
-        const currentTime = Date.now();
-        const fiveMinutes = 5 * 60 * 1000; // 5 minutes in milliseconds
+</body>
+</html>
