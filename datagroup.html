@@ -10,13 +10,14 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #121212; /* Warna latar belakang gelap */
+            color: #ffffff; /* Warna teks putih */
         }
 
         h1 {
             text-align: center;
             margin-top: 20px;
-            color: #333;
+            color: #ffffff; /* Warna teks h1 menjadi putih */
         }
 
         /* Styling untuk Container Card */
@@ -31,11 +32,17 @@
 
         /* Styling untuk Card */
         .card {
-            background-color: white;
+            background-color: #1e1e1e; /* Background card lebih gelap */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Bayangan lebih gelap */
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Efek hover lebih terang */
         }
 
         .card img {
@@ -47,11 +54,11 @@
 
         .card h3 {
             margin: 10px 0;
-            color: #333;
+            color: #ffffff; /* Warna teks menjadi putih */
         }
 
         .card p {
-            color: #666;
+            color: #cccccc; /* Warna teks deskripsi menjadi abu-abu terang */
             margin-bottom: 15px;
         }
 
