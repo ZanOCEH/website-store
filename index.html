@@ -5,13 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ptero Hosting</title>
     <link rel="stylesheet" href="styles.css">
+ <style>
+        /* CSS untuk tombol Like dan Dislike */
+        .like-dislike-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .like-button, .dislike-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .like-button {
+            background-color: #4CAF50; /* Warna hijau untuk like */
+        }
+
+        .like-button:hover {
+            background-color: #45a049;
+        }
+
+        .dislike-button {
+            background-color: #f44336; /* Warna merah untuk dislike */
+        }
+
+        .dislike-button:hover {
+            background-color: #e53935;
+        }
+
+        .like-dislike-count {
+            margin: 0 20px;
+            font-size: 18px;
+            color: #000000;
+        }
+
+        /* Media Query untuk perangkat Android */
+        @media (max-width: 767px) {
+            .like-button, .dislike-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .like-dislike-count {
+                font-size: 16px;
+            }
+        }
+
+        /* Media Query untuk tablet dan desktop */
+        @media (min-width: 768px) {
+            .like-button, .dislike-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .like-dislike-count {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <!-- Pop-up Overlay -->
 <div class="popup-overlay">
     <div class="popup-content">
         <img src="https://telegra.ph/file/33abba1045bdcf3ed7117.jpg" alt="Info Update Produk">
         <h3>Information !</h3>
-        <p>Selamat Datang Diweb PteroHosting!!, Btw ini web masih tahap perkembangan :V</p>
+        <p>Selamat Datang Diweb PteroHosting!, Btw ini web masih tahap perkembangan :V</p>
         <button class="close-popup">Tutup</button>
     </div>
 </div>
@@ -81,6 +146,15 @@
     </div>
 </header>
 
+ <!-- Tombol Like dan Dislike -->
+        <div class="like-dislike-container">
+            <button class="like-button" id="like-button">Like</button>
+            <span class="like-dislike-count" id="like-count">0 Likes</span>
+            <button class="dislike-button" id="dislike-button">Dislike</button>
+            <span class="like-dislike-count" id="dislike-count">0 Dislikes</span>
+        </div>
+    </div>
+</section>
 
 
 
@@ -285,7 +359,37 @@
 </script>
 
 
+<!-- Script JavaScript -->
+    <script>
+        // Ambil data dari localStorage atau inisialisasi ke 0
+        let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
+        let dislikeCount = parseInt(localStorage.getItem('dislikeCount')) || 0;
+
+        // Update tampilan jumlah like dan dislike
+        function updateCounts() {
+            document.getElementById('like-count').textContent = `${likeCount} Likes`;
+            document.getElementById('dislike-count').textContent = `${dislikeCount} Dislikes`;
+        }
+
+        updateCounts(); // Perbarui tampilan awal
+
+        // Fungsi untuk menangani klik tombol Like
+        document.getElementById('like-button').addEventListener('click', function() {
+            likeCount = likeCount === 0 ? 1 : 0; // Toggle antara 0 dan 1
+            localStorage.setItem('likeCount', likeCount);
+            updateCounts();
+        });
+
+        // Fungsi untuk menangani klik tombol Dislike
+        document.getElementById('dislike-button').addEventListener('click', function() {
+            dislikeCount = dislikeCount === 0 ? 1 : 0; // Toggle antara 0 dan 1
+            localStorage.setItem('dislikeCount', dislikeCount);
+            updateCounts();
+        });
+    </script>
+
     <footer>
         <div class="container">
             <p>&copy;2024-2027 PteroHosting.</p>
         </div>
+
